@@ -1,7 +1,8 @@
 ﻿namespace Car_Sales.Entities
 {
-    public class Type : EntityBase
+    public enum Type
     {
-        public string Condition { get; set; } = "";
+       Used,
+       New
     }
 }
