@@ -2,7 +2,7 @@
 {
     public enum Type
     {
-       Used,
-       New
+       Used = 1,
+       New = 2
     }
 }
