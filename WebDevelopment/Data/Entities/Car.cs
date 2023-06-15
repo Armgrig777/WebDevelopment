@@ -16,9 +16,7 @@ namespace Car_Sales.Entities
         public decimal? Price { get; set; }
         public int? Mileage { get; set; }
         public string? Vin { get; set; } = "";
-
-        public string ? Vout { get; set; }
-        
+        public Image? MainImage => Images.FirstOrDefault();
         public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 
 
