@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebDevelopment.Data;
 
@@ -11,9 +12,11 @@ using WebDevelopment.Data;
 namespace WebDevelopment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230615152634_add1")]
+    partial class add1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +135,8 @@ namespace WebDevelopment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MakeId")
+                    b.Property<int?>("MakeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -351,7 +355,7 @@ namespace WebDevelopment.Data.Migrations
             modelBuilder.Entity("Car_Sales.Entities.Car", b =>
                 {
                     b.HasOne("Car_Sales.Entities.Model", "Model")
-                        .WithMany("Cars")
+                        .WithMany()
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -440,11 +444,6 @@ namespace WebDevelopment.Data.Migrations
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
                 {
                     b.Navigation("Models");
-                });
-
-            modelBuilder.Entity("Car_Sales.Entities.Model", b =>
-                {
-                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

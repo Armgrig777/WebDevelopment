@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebDevelopment.Data;
 
@@ -11,9 +12,11 @@ using WebDevelopment.Data;
 namespace WebDevelopment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230615154922_add4")]
+    partial class add4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,23 +108,6 @@ namespace WebDevelopment.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("makes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Mercedes"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Nissan"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Toyota"
-                        });
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Model", b =>

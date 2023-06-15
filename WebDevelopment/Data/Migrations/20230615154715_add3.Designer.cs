@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebDevelopment.Data;
 
@@ -11,9 +12,11 @@ using WebDevelopment.Data;
 namespace WebDevelopment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230615154715_add3")]
+    partial class add3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,23 +108,6 @@ namespace WebDevelopment.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("makes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Mercedes"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Nissan"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Toyota"
-                        });
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Model", b =>
@@ -351,7 +337,7 @@ namespace WebDevelopment.Data.Migrations
             modelBuilder.Entity("Car_Sales.Entities.Car", b =>
                 {
                     b.HasOne("Car_Sales.Entities.Model", "Model")
-                        .WithMany("Cars")
+                        .WithMany()
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -440,11 +426,6 @@ namespace WebDevelopment.Data.Migrations
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
                 {
                     b.Navigation("Models");
-                });
-
-            modelBuilder.Entity("Car_Sales.Entities.Model", b =>
-                {
-                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }
