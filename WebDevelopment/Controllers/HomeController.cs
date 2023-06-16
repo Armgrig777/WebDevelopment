@@ -37,6 +37,11 @@ namespace WebDevelopment.Controllers
             return View();
         }
 
+        public IActionResult BlogPost()
+        {
+            return View();
+        }
+
         public IActionResult Testimonials()
         {
             return View();
