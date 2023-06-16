@@ -14,7 +14,7 @@
 			<div class="inner">
 
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a asp-controller="Home" asp-action="Index" class="logo">
 					<span class="fa fa-car"></span> <span class="title">Car Dealer Website</span>
 				</a>
 
@@ -30,23 +30,23 @@
 		<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href="index.html" class="active">Home</a></li>
+				<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 
-				<li><a href="cars.html">Cars</a></li>
+				<li><a asp-controller="Home" asp-action="Cars">Cars</a></li>
 
 				<li>
 					<a href="#" class="dropdown-toggle">About</a>
 
 					<ul>
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="team.html">Team</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="testimonials.html">Testimonials</a></li>
-						<li><a href="faq.html">FAQ</a></li>
-						<li><a href="terms.html">Terms</a></li>
+						<li><a asp-controller="Home" asp-action="About">About Us</a></li>
+						<li><a asp-controller="Home" asp-action="Team">Team</a></li>
+						<li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
+						<li><a asp-controller="Home" asp-action="Testimonials">Testimonials</a></li>
+						<li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+						<li><a asp-controller="Home" asp-action="Terms">Terms</a></li>
 					</ul>
 				</li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
 			</ul>
 		</nav>
 		<div class="container">
