@@ -8,7 +8,7 @@ namespace Car_Sales.Entities
         [ForeignKey("Model")]
         public int ModelId { get; set; }    
         public virtual Model Model { get; set; } = new Model();
-        public virtual Type Type { get; set; } 
+        public virtual Types Type { get; set; } 
         public virtual Fuel Fuel { get; set; } 
         public virtual GearBox GearBox{ get; set; } 
         public virtual Color Color { get; set; }

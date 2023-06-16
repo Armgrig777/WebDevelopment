@@ -24,10 +24,6 @@ namespace WebDevelopment.Data
                 .HasOne(c => c.Model)
                 .WithMany(c => c.Cars)
                 .HasForeignKey(c => c.ModelId);
-           
-
-
-
         }
 
 
