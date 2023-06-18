@@ -11,17 +11,24 @@
 <body class="is-preload">
 	<div id="wrapper">
 		<header id="header">
+	
 			<div class="inner">
 
 				<!-- Logo -->
 				<a asp-controller="Home" asp-action="Index" class="logo">
 					<span class="fa fa-car"></span> <span class="title">Royal Motors</span>
+					
 				</a>
-
+				 
+				
 				<!-- Nav -->
 				<nav>
 					<ul>
+						<li>
+							<partial name="_LoginPartial" />
+						</li>
 						<li><a href="#menu">Menu</a></li>
+						
 					</ul>
 				</nav>
 
