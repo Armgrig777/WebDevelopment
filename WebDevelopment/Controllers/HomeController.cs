@@ -16,6 +16,23 @@ namespace WebDevelopment.Controllers
             _logger = logger;
             _context = context;
         }
+        public IActionResult Add()
+        {
+            var make = _context.cars.Include(x => x.Make);
+            List<CarModel> cars = new List<CarModel>();
+            foreach(Car car in make)
+            {
+				cars.Add(new CarModel
+                {
+					Id = car.Id,
+					Year = car.Year,
+					Price = car.Price,
+					Make = car.Make.Name,
+					Model = car.Model.Name
+				});
+			}
+            return View(cars);
+        }
        
 
         public IActionResult Index()
