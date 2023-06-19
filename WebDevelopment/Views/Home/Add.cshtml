@@ -1,0 +1,165 @@
+﻿@using System;
+@using WebDevelopment.Data.Entities;
+@using System.Text;
+@model Car;
+@{
+	Color[] enumValues = (Color[])Enum.GetValues(typeof(Color));
+	Fuel[] enumValues1 = (Fuel[])Enum.GetValues(typeof(Fuel));
+	GearBox[] enumValues2 = (GearBox[])Enum.GetValues(typeof(GearBox));
+	Types[] enumValues3 = (Types[])Enum.GetValues(typeof(Types));
+	
+}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label asp-for="Type">Vehicle Type</label>
+
+		@foreach (var enumValue in enumValues3)
+		{
+			<option value="@enumValue">@enumValue</option>
+		}
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Make:</label>
+
+		<select>
+			
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Model:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label asp-for="Price">Price</label>
+		<input asp-for="Price" class="form-control" />
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Mileage:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Engine size:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Power:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label asp-for="Fuel">Fuel Type</label>
+
+		@foreach (var enumValue in enumValues1)
+		{
+			<option value="@enumValue">@enumValue</option>
+		}
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Gearbox:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Doors:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Number of seats:</label>
+
+		<select>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+			<option value="">-- All --</option>
+		</select>
+	</div>
+
+	<br>
+</div>
+
+
+
