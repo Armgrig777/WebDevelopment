@@ -2,7 +2,7 @@
 @using WebDevelopment.Data.Entities;
 @using WebDevelopment.Controllers;
 @using System.Text;
-@model Car;
+@model IEnumerable<CarModel>;
 
 @{
 	Color[] enumValues = (Color[])Enum.GetValues(typeof(Color));
@@ -13,7 +13,7 @@
 }
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label asp-for="Type">Vehicle Type</label>
+		<label asp-for="@Car.Type">Vehicle Type</label>
 		<option value="">-- All --</option>
 		@foreach (var enumValue in enumValues3)
 		{

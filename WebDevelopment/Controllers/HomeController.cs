@@ -25,8 +25,6 @@ namespace WebDevelopment.Controllers
 				cars.Add(new CarModel
                 {
 					Id = car.Id,
-					Year = car.Year,
-					Price = car.Price,
 					Make = car.Make.Name,
 					Model = car.Model.Name
 				});
