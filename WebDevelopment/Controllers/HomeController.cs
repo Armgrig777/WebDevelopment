@@ -29,6 +29,7 @@ namespace WebDevelopment.Controllers
 					Model = car.Model.Name
 				});
 			}
+
             return View(cars);
         }
        

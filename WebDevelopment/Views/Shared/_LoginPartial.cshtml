@@ -5,31 +5,22 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li>
-<a class="nav-link text-dark" asp-controller="Home" asp-action="Add">Sell Vehicle</a>
+    <li class="nav-item nav-buttonsell">
+<a class="nav-link " asp-controller="Home" asp-action="Add">Sell Vehicle</a>
     </li>
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
     <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        <form  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn" >Logout</button>
         </form>
     </li>
       
 }
 else
 {
-        <style>
-            .nav-link-group {
-                display: flex; /* Displays the links horizontally */
-            }
-
-            .nav-link {
-                margin-right: 5px; /* Adds spacing between the links */
-            }
-        </style>
-
+      
         <li class="nav-item">
             <div class="nav-link-group">
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>

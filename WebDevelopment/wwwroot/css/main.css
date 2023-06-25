@@ -26,6 +26,55 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+.nav-link-group {
+	display: flex; /* Displays the links horizontally */
+}
+.navbar-nav{
+
+	flex-direction: row;
+	
+}
+.btn {
+	box-shadow: none;
+	background-color: transparent;
+	border: solid 1px #c9c9c9;
+	border-radius: 4px;
+	padding: 2px 10px !important;
+	display: inline-block;
+	text-align: center;
+	height: 100%;
+	font-size: 0.8em;
+	color: inherit;
+	font-weight: 900;
+	margin-top:-5px;
+}
+
+
+	.btn:hover {
+		box-shadow: none;
+		border-color: var(--danger);
+		color: var(--danger);
+	}
+.nav-buttonsell {
+	background-color: transparent;
+	border: solid 1px #c9c9c9;
+	border-radius: 4px;
+	padding: 5px 10px;
+	display: inline-block;
+	text-align: center;
+	height: 100%;
+	color: inherit;
+	background-color:darkgrey;
+}
+.nav-buttonsell:hover{
+	border-color: var(--danger);
+    color: var(--danger);
+}
+.nav-buttonsell > .nav-link:hover{
+color: var(--danger);
+}
+	
+
 
 ol, ul {
 	list-style: none;
@@ -2820,12 +2869,17 @@ input, select, textarea {
 					width: 2em;
 					height: 2em;
 				}
-
-		#header nav {
-			position: fixed;
-			right: 1em;
-			top: 1em;
-			z-index: 10000;
+       #header .inner{
+            display: flex;
+            justify-content: space-between;  
+			padding: 0 1em;
+       }
+		
+		.BurgerMenu{
+            position: fixed;
+            right: 1em;
+            top: 1em;
+            z-index: 10000;
 		}
 
 			#header nav ul {
@@ -2833,10 +2887,6 @@ input, select, textarea {
 				display: -webkit-flex;
 				display: -ms-flex;
 				display: flex;
-				-moz-align-items: center;
-				-webkit-align-items: center;
-				-ms-align-items: center;
-				align-items: center;
 				list-style: none;
 				margin: 0;
 				padding: 0;
@@ -2850,8 +2900,7 @@ input, select, textarea {
 					#header nav ul li a {
 						display: block;
 						position: relative;
-						height: 3em;
-						line-height: 3em;
+					
 						padding: 0 1.5em;
 						background-color: rgba(255, 255, 255, 0.5);
 						border-radius: 4px;

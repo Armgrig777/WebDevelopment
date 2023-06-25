@@ -1,6 +1,6 @@
 ﻿namespace WebDevelopment.Controllers
 {
-	public class CarModel
+	public  class CarModel
 	{
 		public int Id { get; set; }
 

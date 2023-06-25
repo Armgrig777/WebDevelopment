@@ -9,11 +9,13 @@
 	Fuel[] enumValues1 = (Fuel[])Enum.GetValues(typeof(Fuel));
 	GearBox[] enumValues2 = (GearBox[])Enum.GetValues(typeof(GearBox));
 	Types[] enumValues3 = (Types[])Enum.GetValues(typeof(Types));
-	
+
+
+
 }
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label asp-for="@Car.Type">Vehicle Type</label>
+		<label class="m-n">Vehicle Type</label>
 		<option value="">-- All --</option>
 		@foreach (var enumValue in enumValues3)
 		{
@@ -26,11 +28,11 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label class="m-n" asp-for="Make">Make:</label>
+		<label class="m-n">Make:</label>
 		<option value="">-- All --</option>
-		@foreach ()
+		@foreach (var carmodel in Model)
 		{
-			
+			<option value="@carmodel.Car.Make">@carmodel.Car.Make</option>
 		}
 	</div>
 
@@ -39,21 +41,12 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label class="m-n" asp-for="Model">Model:</label>
-			<option value="">-- All --</option>
-				@foreach ()
-			{
-				
-			}
-		</div>
-
-	<br>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-	<div class="form-group">
-		<label class="m-n" asp-for="Price">Price</label>
-		<input class="m-n" asp-for="Price"/>
+		<label class="m-n">Model:</label>
+		<option value="">-- All --</option>
+		@foreach (var carmodel in Model)
+		{
+			<option value="@carmodel.Car.Model">@carmodel.Car.Model</option>
+		}
 	</div>
 
 	<br>
@@ -61,7 +54,16 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label class="m-n" asp-for="Mileage">Mileage:</label>
+		<label class="m-n">Price</label>
+		<input class="m-n" asp-for="Price" />
+	</div>
+
+	<br>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	<div class="form-group">
+		<label class="m-n">Mileage:</label>
 		<input class="m-n" asp-for="Price" />
 
 	</div>
@@ -71,9 +73,9 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-		<label class="m-n" asp-for="EngineSize">Engine size:</label>
+		<label class="m-n">Engine size:</label>
 		<input class="m-n" asp-for="EngineSize" />
-		
+
 	</div>
 
 	<br>
@@ -82,7 +84,7 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
 		<label class="m-n" asp-for="Power">Power:</label>
-         <input class="m-n" asp-for="Power" />
+		<input class="m-n" asp-for="Power" />
 	</div>
 
 	<br>
@@ -124,7 +126,7 @@
 			<option value="">-- 4 --</option>
 			<option value="">-- 5 --</option>
 		</select>
-		
+
 	</div>
 
 	<br>
@@ -136,15 +138,13 @@
 
 		<select>
 			<option value="">-- All --</option>
-			@for(int i = 1; i <= 20; i++)
-            {
-                <option value="">-- @i --</option>
-            })
+			@for (int i = 1; i <= 20; i++)
+			{
+				<option value="">-- @i --</option>
+			})
 		</select>
 	</div>
 
 	<br>
 </div>
-
-
 
