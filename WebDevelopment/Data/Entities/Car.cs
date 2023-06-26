@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 using WebDevelopment.Data.Entities;
 
 namespace Car_Sales.Entities
 {
-    public class Car : EntityBase
+    public  class Car : EntityBase
     {
         [ForeignKey("Model")]
         public int ModelId { get; set; }    
@@ -12,12 +13,12 @@ namespace Car_Sales.Entities
         [ForeignKey("Make")]
         public int MakeId { get; set; }
 		public virtual Make Make { get; set; } = new Make();
-		
-		public  Types Type { get; set; } 
-        public  Fuel Fuel { get; set; } 
-        public  GearBox GearBox{ get; set; } 
-        public  Color Color { get; set; }
-        public  double? EngineSize { get; set; }
+
+        public Types Type { get; set; }
+        public Fuel Fuel { get; set; }
+		public  GearBox GearBox{ get; set; }
+		public  Colors Color { get; set; }
+		public  double? EngineSize { get; set; }
         public int? Power { get; set; }
         public  int? Doors { get; set; }
         public int? Seats { get; set; }

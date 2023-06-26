@@ -16,21 +16,22 @@ namespace WebDevelopment.Controllers
             _logger = logger;
             _context = context;
         }
-        public IActionResult Add()
+        public IActionResult Add(Car car)
         {
-            var make = _context.cars.Include(x => x.Make);
-            List<CarModel> cars = new List<CarModel>();
-            foreach(Car car in make)
+            var make = _context.models;
+            List<CarModel> models = new List<CarModel>();
+            foreach(Model model in make)
             {
-				cars.Add(new CarModel
+				models.Add(new CarModel
                 {
-					Id = car.Id,
-					Make = car.Make.Name,
+					
+					Make = car.Model.Make.Name,
 					Model = car.Model.Name
 				});
 			}
+           
 
-            return View(cars);
+            return View(models);
         }
        
 
