@@ -1,0 +1,41 @@
+﻿@using WebDevelopment.Controllers;
+@using Microsoft.AspNetCore.Identity;
+@using WebDevelopment.Models;
+@inject UserManager<IdentityUser> UserManager
+@{
+	var currentUser = await UserManager.GetUserAsync(User);
+	var phoneNumber = await UserManager.GetPhoneNumberAsync(currentUser);
+}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3">
+				<h3>Contact Details</h3>
+
+				<ul class="alt">
+					<li><span class="fa fa-user"></span> @User.Identity?.Name</li>
+					<li><span class="fa fa-phone"></span> @phoneNumber </li>
+					
+				</ul>
+			<li class="nav-link">
+				<a class="nav-buttonPerson" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Personal Data</a>
+			</li>
+			</div>
+		<div class="inner ">
+			<div class="row">
+				<div class="nav-link">
+					<ul>
+						<a class="nav-buttonsell" asp-controller="Home" asp-action="Add">Sell Vehicle</a>
+						<a class=" nav-buttonsell" asp-controller="Home" asp-action="MyVehicles">My Vehicles</a>
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+   
+
+

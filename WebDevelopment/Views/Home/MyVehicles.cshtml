@@ -1,0 +1,62 @@
+﻿@using WebDevelopment.Controllers;
+@using Microsoft.AspNetCore.Identity;
+@using WebDevelopment.Models;
+@model IEnumerable<Mycars>;
+@inject UserManager<IdentityUser> UserManager
+@{
+	var currentUser = await UserManager.GetUserAsync(User);
+	var phoneNumber = await UserManager.GetPhoneNumberAsync(currentUser);
+}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<h3>Contact Details</h3>
+
+			<ul class="alt">
+				<li><span class="fa fa-user"></span> @User.Identity?.Name</li>
+				<li><span class="fa fa-phone"></span> @phoneNumber </li>
+
+			</ul>
+			<li class="nav-link">
+				<a class="nav-buttonPerson" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Personal Data</a>
+			</li>
+		</div>
+		<div class="inner ">
+			<div class="row">
+				<div class="nav-link">
+					<ul>
+						<a class="nav-buttonsell" asp-controller="Home" asp-action="Add">Sell Vehicle</a>
+						<a class=" nav-buttonsell" asp-controller="Home" asp-action="MyVehicles">My Vehicles</a>
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+@foreach(Mycars car in Model)
+{
+	<article class="style5">
+		<span class="image">
+			<img src="@car.Image" alt="" />
+		</span>
+		<a asp-controller="Home" asp-action="CarDetails">
+			<h2>@car.Year@car.Make@car.Model</h2>
+
+			<p><del>@car.Price</del> <strong>@car.Price</strong></p>
+
+			<p>
+				<i class="fa fa-dashboard"></i> @car.Mileage;
+				<i class="fa fa-cube"></i> @car.EngineSize;
+				<i class="fa fa-cog"></i> @car.GearBox
+			</p>
+		</a>
+		<a asp-controller="Home" class="nav-buttonsell" asp-action="Edit" asp-route-id="@car.Id">Edit</a>
+		<a asp-controller="Home" class="nav-buttonsell" asp-action="Delete" asp-route-id="@car.Id">Delete</a>
+	</article>
+}

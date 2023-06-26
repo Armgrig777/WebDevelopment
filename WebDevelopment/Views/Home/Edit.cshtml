@@ -1,0 +1,179 @@
+﻿@using System;
+@using WebDevelopment.Data.Entities;
+@using WebDevelopment.Controllers;
+@using System.Text;
+@model Mycars;
+@inject Carscombo carscombo;
+@{
+	
+	IEnumerable<CarModel> carModels = carscombo.carModels;
+}
+
+
+<form asp-action="Add" method="post">
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Type">Vehicle Type</label>
+			<select asp-for="@Model.Type" class="m-n">
+				<option value="">@Model.Type</option>
+				@foreach (var Types in Enum.GetValues(typeof(Types)))
+				{
+					<option value="@Types">@Types</option>
+				}
+			</select>
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Make">Make</label>
+			<select asp-for="@Model.Make" class="m-n">
+				<option value="">@Model.Make</option>
+				@foreach (var make in carModels)
+				{
+					<option value="@make.Make">@make.Make</option>
+				}
+			</select>
+
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Model">Model</label>
+			<select asp-for="@Model.Model" class="m-n">
+				<option value="">-- All --</option>
+				@foreach (var make in carModels)
+				{
+					<option value="@make.Model">@make.Model</option>
+				}
+			</select>
+
+
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Price">Price</label>
+			<input class="m-n" asp-for="Price" />
+
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Mileage">Mileage</label>
+			<input class="m-n" asp-for="Mileage" />
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.EngineSize">Engine Size</label>
+			<input class="m-n" asp-for="EngineSize" />
+
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Power">Power</label>
+			<input class="m-n" asp-for="Power" />
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Fuel">Fuel Type</label>
+			<select asp-for="Fuel" class="m-n">
+				<option value="">-- Select a fuel type --</option>
+				@foreach (var fuelType in Enum.GetValues(typeof(Fuel)))
+				{
+					<option value="@fuelType">@fuelType</option>
+				}
+			</select>
+		</div>
+
+		<br>
+	</div>
+
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.GearBox">Gearbox</label>
+			<select asp-for="GearBox" class="m-n">
+				<option value="">-- Select a GearBox type --</option>
+				@foreach (var gearbox in Enum.GetValues(typeof(GearBox)))
+				{
+					<option value="@gearbox">@gearbox</option>
+				}
+			</select>
+		</div>
+
+		<br>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Color">Color</label>
+			<select asp-for="Color" class="m-n">
+				<option value="">-- Select a GearBox type --</option>
+				@foreach (var color in Enum.GetValues(typeof(Colors)))
+				{
+					<option value="@color">@color</option>
+				}
+			</select>
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Doors">Doors:</label>
+			<select asp-for="Doors" class="m-n">
+				<option value="">-- Select the number of doors --</option>
+				@for (int i = 2; i <= 5; i++)
+				{
+					<option value="@i">@i</option>
+				}
+			</select>
+
+		</div>
+
+		<br>
+	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label class="m-n" asp-for="@Model.Seats">Number of seats:</label>
+
+			<select asp-for="Seats" class="m-n">
+				<option value="">-- Select the number of Seats --</option>
+				@for (int i = 2; i <= 20; i++)
+				{
+					<option value="@i">@i</option>
+				}
+			</select>
+		</div>
+
+		<br>
+	</div>
+	<button type="submit" class="nav-buttonsell">Publish</button>
+</form>
+
+

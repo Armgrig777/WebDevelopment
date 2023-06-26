@@ -1,13 +1,14 @@
-﻿<!DOCTYPE HTML>
+﻿@using WebDevelopment.Controllers;
+@using Microsoft.AspNetCore.Identity;
+@using WebDevelopment.Models;
+@model Mycars;
+@inject UserManager<IdentityUser> UserManager
+@{
+	var currentUser = await UserManager.GetUserAsync(User);
+	var phoneNumber = await UserManager.GetPhoneNumberAsync(currentUser);
+}
 <html>
-<head>
-	<title>PHPJabbers.com | Free Car Dealer Website Template</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-</head>
+
 <body class="is-preload">
 	<!-- Wrapper -->
 	<div id="wrapper">
@@ -58,7 +59,7 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<h1>Lorem ipsum dolor sit amet consectetur <span class="pull-right">$ 16 000</span></h1>
+				<h1>@Model.Year@Model.Make@Model.Model <span class="pull-right">@Model.Price$</span></h1>
 
 				<div class="container-fluid">
 					<div class="row">
@@ -66,27 +67,28 @@
 							<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 								<ol class="carousel-indicators">
 									<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+									@for(int i = 1; i < Model.Carpics.Count; i++)
+									{
+										<li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+									}
 								</ol>
 								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img class="d-block w-100" src="images/product-1-720x480.jpg" alt="First slide">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="images/product-2-720x480.jpg" alt="Second slide">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="images/product-3-720x480.jpg" alt="Third slide">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="images/product-4-720x480.jpg" alt="Fourth slide">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="images/product-5-720x480.jpg" alt="Fifth slide">
-									</div>
+									@foreach(var image in Model.Carpics)
+                                    {
+                                        if (image == Model.Carpics[0])
+                                        {
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="@image" alt="First slide">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="@image">
+                                            </div>
+                                        }
+                                    })
+									
 								</div>
 								<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -100,9 +102,11 @@
 						</div>
 
 						<div class="col-lg-5">
+							@*
 							<h3>Vehicle Description</h3>
 
 							<p>- Colour coded bumpers<br>- Tinted glass<br>- Immobiliser<br>- Central locking - remote<br>- Passenger airbag<br>- Electric windows<br>- Rear head rests<br>- Radio<br>- CD player<br>- Ideal first car<br>- Warranty</p>
+							*@
 						</div>
 					</div>
 				</div>
@@ -113,75 +117,75 @@
 				<form action="#">
 					<div class="fields">
 						<div class="field quarter">
-							<label class="m-n">Type</label>
+							<label class="m-n"asp-for="Type">Type</label>
 
-							<input type="text" readonly="" value="Used vehicle">
+							<input type="text" readonly="" value="@Model.Type">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Make</label>
+							<label class="m-n" asp-for="Make">Make</label>
 
-							<input type="text" readonly="" value="Lorem ipsum dolor sit">
+							<input type="text" readonly="" value="@Model.Make">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Model</label>
+							<label class="m-n"asp-for="Model">Model</label>
 
-							<input type="text" readonly="" value="Lorem ipsum dolor sit">
+							<input type="text" readonly="" value="@Model.Model">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">First registration</label>
+							<label class="m-n" asp-for="Year">First registration</label>
 
-							<input type="text" readonly="" value="05/2010">
+							<input type="text" readonly="" value="@Model.Year">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Mileage</label>
+							<label class="m-n" asp-for="Mileage">Mileage</label>
 
-							<input type="text" readonly="" value="5000 km">
+							<input type="text" readonly="" value="@Model.Mileage">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Fuel</label>
+							<label class="m-n"asp-for="Fuel">Fuel</label>
 
-							<input type="text" readonly="" value="Diesel">
+							<input type="text" readonly="" value="@Model.Fuel">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Engine size</label>
+							<label class="m-n"asp-for="EngineSize">Engine size</label>
 
-							<input type="text" readonly="" value="1800 cc">
+							<input type="text" readonly="" value="@Model.EngineSize cc">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Power</label>
+							<label class="m-n"asp-for="Power">Power</label>
 
-							<input type="text" readonly="" value="85 hp">
+							<input type="text" readonly="" value="@Model.Power hp">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Gearbox</label>
+							<label class="m-n"asp-for="GearBox">Gearbox</label>
 
-							<input type="text" readonly="" value="Manual">
+							<input type="text" readonly="" value="@Model.GearBox">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Number of seats</label>
+							<label class="m-n" asp-for="Seats">Number of seats</label>
 
-							<input type="text" readonly="" value="4">
+							<input type="text" readonly="" value="@Model.Seats">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Doors</label>
+							<label class="m-n"asp-for="Doors">Doors</label>
 
-							<input type="text" readonly="" value="2/3">
+							<input type="text" readonly="" value="@Model.Doors">
 						</div>
 
 						<div class="field quarter">
-							<label class="m-n">Color</label>
+							<label class="m-n"asp-for="Color">Color</label>
 
-							<input type="text" readonly="" value="black">
+							<input type="text" readonly="" value="@Model.Color">
 						</div>
 					</div>
 				</form>
@@ -192,19 +196,15 @@
 							<h3>Contact Details</h3>
 
 							<ul class="alt">
-								<li><span class="fa fa-user"></span> John Smith</li>
-								<li><span class="fa fa-phone"></span> +1 333 4040 5566 </li>
+								<li><span class="fa fa-user"></span> @User.Identity?.Name</li>
+								<li><span class="fa fa-phone"></span> @phoneNumber </li>
 								<li><span class="fa fa-mobile-phone"></span> +1 333 4040 5566 </li>
-								<li><span class="fa fa-envelope-o"></span> <a href="#">john@carsales.com</a></li>
+							
 
 							</ul>
 						</div>
 
-						<div class="col-md-9">
-							<h3>Extras </h3>
-
-							<p>ABS, Leather seats, Power Assisted Steering, Electric heated seats, New HU and AU, Xenon headlights</p>
-						</div>
+						
 					</div>
 				</div>
 			</div>

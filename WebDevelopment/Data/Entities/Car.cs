@@ -6,6 +6,7 @@ namespace Car_Sales.Entities
 {
     public  class Car : EntityBase
     {
+        public string UserID { get; set; } = "";
         [ForeignKey("Model")]
         public int ModelId { get; set; }    
         public virtual Model Model { get; set; } = new Model();
