@@ -18,14 +18,14 @@ namespace WebDevelopment.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Model>()
-                .HasOne(m => m.Make)
-                .WithMany(m => m.Models)
-                .HasForeignKey(m => m.MakeId);
-            builder.Entity<Car>()
-                .HasOne(c => c.Model)
-                .WithMany(c => c.Cars)
-                .HasForeignKey(c => c.ModelId);
+            //builder.Entity<Model>()
+            //    .HasOne(m => m.Make)
+            //    .WithMany(m => m.Models)
+            //    .HasForeignKey(m => m.MakeId);
+            //builder.Entity<Car>()
+            //    .HasOne(c => c.Model)
+            //    .WithMany(c => c.Cars)
+            //    .HasForeignKey(c => c.ModelId);
         }
 
 

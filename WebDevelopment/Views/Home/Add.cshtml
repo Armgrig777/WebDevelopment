@@ -23,8 +23,8 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="form-group">
-			<label class="m-n" asp-for="@Model.car.Make">Make</label>
-			<select asp-for="@Model.car.Make" class="m-n">
+			<label class="m-n" asp-for="@Model.car.Model.Make">Make</label>
+			<select asp-for="@Model.car.Model.Make" class="m-n">
 				<option value="">-- All --</option>
 				@foreach (var make in Model.carModels)
 				{
