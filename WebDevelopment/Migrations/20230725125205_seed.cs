@@ -4,22 +4,22 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace WebDevelopment.Data.Migrations
+namespace WebDevelopment.Migrations
 {
     /// <inheritdoc />
-    public partial class add : Migration
+    public partial class seed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
-                table: "makes",
+                table: "Makes",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Mercedes" },
-                    { 2, "Nissan" },
-                    { 3, "Toyota" }
+                    { 1, "Toyota" },
+                    { 2, "Ford" },
+                    { 3, "Chevrolet" }
                 });
         }
 
@@ -27,17 +27,17 @@ namespace WebDevelopment.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
-                table: "makes",
+                table: "Makes",
                 keyColumn: "Id",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "makes",
+                table: "Makes",
                 keyColumn: "Id",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "makes",
+                table: "Makes",
                 keyColumn: "Id",
                 keyValue: 3);
         }

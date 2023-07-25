@@ -9,11 +9,11 @@ using WebDevelopment.Data;
 
 #nullable disable
 
-namespace WebDevelopment.Data.Migrations
+namespace WebDevelopment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230627154331_rest")]
-    partial class rest
+    [Migration("20230725125205_seed")]
+    partial class seed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,13 +48,11 @@ namespace WebDevelopment.Data.Migrations
                     b.Property<int>("GearBox")
                         .HasColumnType("int");
 
-                    b.Property<int>("MakeId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("Mileage")
                         .HasColumnType("int");
 
-                    b.Property<int>("ModelId")
+                    b.Property<int?>("ModelId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("Power")
@@ -81,11 +79,9 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MakeId");
-
                     b.HasIndex("ModelId");
 
-                    b.ToTable("cars");
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Image", b =>
@@ -108,7 +104,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("images");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
@@ -125,7 +121,24 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("makes");
+                    b.ToTable("Makes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Toyota"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ford"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Chevrolet"
+                        });
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Model", b =>
@@ -136,7 +149,8 @@ namespace WebDevelopment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MakeId")
+                    b.Property<int?>("MakeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -147,7 +161,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("models");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -354,19 +368,11 @@ namespace WebDevelopment.Data.Migrations
 
             modelBuilder.Entity("Car_Sales.Entities.Car", b =>
                 {
-                    b.HasOne("Car_Sales.Entities.Make", "Make")
-                        .WithMany()
-                        .HasForeignKey("MakeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Car_Sales.Entities.Model", "Model")
-                        .WithMany("Cars")
+                        .WithMany()
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Make");
 
                     b.Navigation("Model");
                 });
@@ -452,11 +458,6 @@ namespace WebDevelopment.Data.Migrations
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
                 {
                     b.Navigation("Models");
-                });
-
-            modelBuilder.Entity("Car_Sales.Entities.Model", b =>
-                {
-                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

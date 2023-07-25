@@ -9,11 +9,11 @@ using WebDevelopment.Data;
 
 #nullable disable
 
-namespace WebDevelopment.Data.Migrations
+namespace WebDevelopment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230615144901_asdasf")]
-    partial class asdasf
+    [Migration("20230725124725_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,12 @@ namespace WebDevelopment.Data.Migrations
                     b.Property<int>("Color")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Doors")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("EngineSize")
+                        .HasColumnType("float");
+
                     b.Property<int>("Fuel")
                         .HasColumnType("int");
 
@@ -45,14 +51,25 @@ namespace WebDevelopment.Data.Migrations
                     b.Property<int?>("Mileage")
                         .HasColumnType("int");
 
-                    b.Property<int>("ModelId")
+                    b.Property<int?>("ModelId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Power")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("Seats")
+                        .HasColumnType("int");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vin")
                         .HasColumnType("nvarchar(max)");
@@ -64,7 +81,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("cars");
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Image", b =>
@@ -87,7 +104,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("images");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
@@ -104,7 +121,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("makes");
+                    b.ToTable("Makes");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Model", b =>
@@ -115,8 +132,7 @@ namespace WebDevelopment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("MakeId")
-                        .IsRequired()
+                    b.Property<int>("MakeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -127,7 +143,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("models");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

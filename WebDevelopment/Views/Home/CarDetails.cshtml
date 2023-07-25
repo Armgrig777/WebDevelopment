@@ -1,7 +1,8 @@
 ﻿@using WebDevelopment.Controllers;
 @using Microsoft.AspNetCore.Identity;
 @using WebDevelopment.Models;
-@model Mycars;
+
+@model MyCarsModel;
 @inject UserManager<IdentityUser> UserManager
 @{
 	var currentUser = await UserManager.GetUserAsync(User);

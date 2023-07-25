@@ -2,8 +2,10 @@
 @using WebDevelopment.Data.Entities;
 @using WebDevelopment.Controllers;
 @using System.Text;
-@model Mycars;
-@inject Carscombo carscombo;
+
+@model MyCarsModel;
+
+@inject CarsComboModel carscombo;
 @{
 	
 	IEnumerable<CarModel> carModels = carscombo.carModels;

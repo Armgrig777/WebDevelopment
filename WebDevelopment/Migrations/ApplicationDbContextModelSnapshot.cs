@@ -8,7 +8,7 @@ using WebDevelopment.Data;
 
 #nullable disable
 
-namespace WebDevelopment.Data.Migrations
+namespace WebDevelopment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -78,7 +78,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("cars");
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Image", b =>
@@ -101,7 +101,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("images");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Make", b =>
@@ -118,7 +118,24 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("makes");
+                    b.ToTable("Makes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Toyota"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ford"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Chevrolet"
+                        });
                 });
 
             modelBuilder.Entity("Car_Sales.Entities.Model", b =>
@@ -141,7 +158,7 @@ namespace WebDevelopment.Data.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("models");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

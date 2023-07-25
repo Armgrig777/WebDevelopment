@@ -14,28 +14,32 @@ namespace WebDevelopment.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
 
-            //builder.Entity<Model>()
-            //    .HasOne(m => m.Make)
-            //    .WithMany(m => m.Models)
-            //    .HasForeignKey(m => m.MakeId);
-            //builder.Entity<Car>()
-            //    .HasOne(c => c.Model)
-            //    .WithMany(c => c.Cars)
-            //    .HasForeignKey(c => c.ModelId);
-        }
+		protected override void OnModelCreating(ModelBuilder builder)
+		{
+            // Seed models and makes
+            builder.Entity<Make>().HasData(
+                new Make { Id = 1, Name = "Toyota" },
+                new Make { Id = 2, Name = "Ford" },
+                new Make { Id = 3, Name = "Chevrolet" }
+            );
+
+            //builder.Entity<Model>().HasData(
+            //    new Model { Id = 1, Name = "Corolla", MakeId = 1 },
+            //    new Model { Id = 2, Name = "Camry", MakeId = 1 },
+            //    new Model { Id = 3, Name = "F-150", MakeId = 2 },
+            //    new Model { Id = 4, Name = "Mustang", MakeId = 2 },
+            //    new Model { Id = 5, Name = "Silverado", MakeId = 3 },
+            //    new Model { Id = 6, Name = "Equinox", MakeId = 3 }
+            //);
 
 
-        public DbSet<Make> makes { get; set; }
-        public DbSet<Model> models { get; set; }
-        public DbSet<Car> cars { get; set; }
-        public DbSet<Image> images { get; set; }
+			base.OnModelCreating(builder);
+		}
 
-
-        
-
+		public DbSet<Make> Makes { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }
